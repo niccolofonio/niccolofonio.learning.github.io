@@ -100,7 +100,8 @@
     </div>
 
     <button onclick="getRandomWord2()">Get Another Word</button>
-
+    <button onclick="toggleTranslation()">Toggle Translation</button>
+    
     <script>
         function getRandomWord2() {
             Promise.all([
@@ -127,10 +128,19 @@
                 const englishP = document.createElement('p');
                 englishP.textContent = translation ? translation.english : 'Translation not available';
                 englishTranslationContainer.appendChild(englishP);
+
+                // Reset the visibility of the English translation when fetching a new word
+                englishTranslationContainer.style.display = 'none';
             })
             .catch(error => console.error('Error fetching or processing data:', error));
         }
 
+        function toggleTranslation() {
+            const englishTranslationContainer = document.getElementById('english-translation');
+            const currentDisplay = window.getComputedStyle(englishTranslationContainer).getPropertyValue('display');
+            englishTranslationContainer.style.display = currentDisplay === 'none' ? 'block' : 'none';
+        }
+        
         // Initial call to display words when the page loads
         getRandomWord2();
     </script>
