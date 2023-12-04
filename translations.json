@@ -1,0 +1,8 @@
+{
+  "translations": [
+    {"french": "Bonjour", "english": "Hello"},
+    {"french": "Merci", "english": "Thank you"},
+    {"french": "Bibliothèque", "english": "Library"},
+    {"french": "Chocolat", "english": "Chocolate"}
+  ]
+}
