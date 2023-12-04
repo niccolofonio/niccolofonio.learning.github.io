@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning French</title>
+
+    <style>
+        #word-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>All French Words and Translations</h1>
+
+    <div id="all-words-container"></div>
+
+    <script>
+        function displayAllWords() {
+            Promise.all([
+                fetch('french-words.json').then(response => response.json()),
+                fetch('translations.json').then(response => response.json())
+            ])
+            .then(([frenchWords, translations]) => {
+                const allWordsContainer = document.getElementById('all-words-container');
+                allWordsContainer.innerHTML = ''; // Clear previous words
+
+                frenchWords.words.forEach(frenchWord => {
+                    const translation = translations.translations.find(t => t.french === frenchWord);
+
+                    const wordContainer = document.createElement('div');
+                    wordContainer.classList.add('word-container');
+
+                    const frenchWordContainer = document.createElement('div');
+                    const englishTranslationContainer = document.createElement('div');
+
+                    const frenchP = document.createElement('p');
+                    frenchP.textContent = frenchWord;
+                    frenchWordContainer.appendChild(frenchP);
+
+                    const englishP = document.createElement('p');
+                    englishP.textContent = translation ? translation.english : 'Translation not available';
+                    englishTranslationContainer.appendChild(englishP);
+
+                    wordContainer.appendChild(frenchWordContainer);
+                    wordContainer.appendChild(englishTranslationContainer);
+
+                    allWordsContainer.appendChild(wordContainer);
+                });
+
+                // Reset the visibility of the English translation when displaying all words
+                const englishTranslationContainers = document.querySelectorAll('.word-container #english-translation');
+                englishTranslationContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+            })
+            .catch(error => console.error('Error fetching or processing data:', error));
+        }
+
+        // Initial call to display all words when the page loads
+        displayAllWords();
+    </script>
+    
+</body>
+</html>
