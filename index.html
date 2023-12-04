@@ -22,6 +22,12 @@
             padding: 10px;
             background-color: #f0f0f0;
         }
+
+        #last-update {
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
     </style>
 </head>
 <body>
@@ -64,14 +70,22 @@
         </section>
 
         <section id="section_contact">
-            You can currently contact me at niccolo.FONIO@etu.univ-amu.fr  or niccolo.fonio@lis-lab.fr <br>
-            Linkedin: <a href="https://www.linkedin.com/in/niccol%C3%B2-fonio-38465a237/"> Niccolò Fonio </a>
+            <h1> Get in touch! </h1>
+            <p> If you are curious, if you have an idea you would like to share, if you have an interesting thought that you want to share with
+                me please feel free to do so. <br>
+                You can currently contact me at niccolo.FONIO@etu.univ-amu.fr  or niccolo.fonio@lis-lab.fr <br>
+                Linkedin: <a href="https://www.linkedin.com/in/niccol%C3%B2-fonio-38465a237/"> Niccolò Fonio </a>
+            </p>
         </section>
 
-        <section id="Learning French">
-            <p>Welcome to the home page. Click <a href="learningfrench.html">here</a> to go to Page 2.</p>
-        </section>
-                
+        <h1>Last Update Information</h1>
+            <div id="last-update"></div>
+
+        <script>
+            const lastUpdateElement = document.getElementById('last-update');
+            const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            lastUpdateElement.textContent = `Last Update: ${currentDate}`;
+        </script>
     </main>
 
     <footer>
