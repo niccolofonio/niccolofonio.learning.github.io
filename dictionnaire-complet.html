@@ -26,6 +26,8 @@
                 fetch('translations.json').then(response => response.json())
             ])
             .then(([frenchWords, translations]) => {
+                frenchWords.words.sort();
+                
                 const allWordsContainer = document.getElementById('all-words-container');
                 allWordsContainer.innerHTML = ''; // Clear previous words
 
