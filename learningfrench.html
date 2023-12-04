@@ -16,33 +16,12 @@
 </head>
 <body>
 
-    <h1>Page 2</h1>
-    <p>This is Page 2. Click <a href="index.html">here</a> to go back to the Home Page.</p>
-
-    <h1>Your Website Content</h1>
-    <p>This is the content of your website that you want to make translatable.</p>
+    <h1>Learning French</h1>
+    <p>This is the Learning French page with personalized exercises. <br> 
+    Click <a href="index.html">here</a> to go back to the Home Page.</p>
 
     <h1>French Words</h1>
     <p> <a href="dictionnaire-complet.html">Here</a> you can find the complete dictionary</p>
-    <div id="word-container"></div>
-
-    <script>
-        // Fetch data from the external file
-        fetch('french-words.json')
-            .then(response => response.json())
-            .then(data => {
-                // Process the data and display it
-                const wordContainer = document.getElementById('word-container');
-                data.words.forEach(word => {
-                    const p = document.createElement('p');
-                    p.textContent = word;
-                    wordContainer.appendChild(p);
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    </script>
-
-    <div id="word-container"></div>
 
     <div class="word-container" id="word-container">
         <div id="french-word"></div>
