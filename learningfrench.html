@@ -44,56 +44,6 @@
 
     <div id="word-container"></div>
 
-    <script>
-        fetch('french-words.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const wordContainer = document.getElementById('word-container');
-                const randomIndex = Math.floor(Math.random() * data.words.length);
-                const randomWord = data.words[randomIndex];
-
-                const p = document.createElement('p');
-                p.textContent = randomWord;
-                wordContainer.appendChild(p);
-            })
-            .catch(error => console.error('Error fetching or processing data:', error));
-    </script>
-
-    <button onclick="getRandomWord()">Get Another Word</button>
-
-    <script>
-        function getRandomWord() {
-            fetch('french-words.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const wordContainer = document.getElementById('word-container');
-                    const randomIndex = Math.floor(Math.random() * data.words.length);
-                    const randomWord = data.words[randomIndex];
-
-                    // Clear previous word
-                    wordContainer.innerHTML = '';
-
-                    const p = document.createElement('p');
-                    p.textContent = randomWord;
-                    wordContainer.appendChild(p);
-                })
-                .catch(error => console.error('Error fetching or processing data:', error));
-        }
-        
-        // Initial call to display a word when the page loads
-        getRandomWord();
-    </script>
-
     <div class="word-container" id="word-container">
         <div id="french-word"></div>
         <div id="english-translation"></div>
