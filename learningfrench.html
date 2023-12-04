@@ -10,5 +10,19 @@
     <h1>Page 2</h1>
     <p>This is Page 2. Click <a href="index.html">here</a> to go back to the Home Page.</p>
 
+    <h1>Your Website Content</h1>
+    <p>This is the content of your website that you want to make translatable.</p>
+
+    <!-- Google Translate Button -->
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    
 </body>
 </html>
