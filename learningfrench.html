@@ -93,6 +93,47 @@
         // Initial call to display a word when the page loads
         getRandomWord();
     </script>
+
+    <div class="word-container" id="word-container">
+        <div id="french-word"></div>
+        <div id="english-translation"></div>
+    </div>
+
+    <button onclick="getRandomWord2()">Get Another Word</button>
+
+    <script>
+        function getRandomWord2() {
+            Promise.all([
+                fetch('french-words.json').then(response => response.json()),
+                fetch('translations.json').then(response => response.json())
+            ])
+            .then(([frenchWords, translations]) => {
+                const wordContainer = document.getElementById('word-container');
+                const frenchWordContainer = document.getElementById('french-word');
+                const englishTranslationContainer = document.getElementById('english-translation');
+
+                const randomIndex = Math.floor(Math.random() * frenchWords.words.length);
+                const randomFrenchWord = frenchWords.words[randomIndex];
+                const translation = translations.translations.find(t => t.french === randomFrenchWord);
+
+                // Clear previous words
+                frenchWordContainer.textContent = '';
+                englishTranslationContainer.textContent = '';
+
+                const frenchP = document.createElement('p');
+                frenchP.textContent = randomFrenchWord;
+                frenchWordContainer.appendChild(frenchP);
+
+                const englishP = document.createElement('p');
+                englishP.textContent = translation ? translation.english : 'Translation not available';
+                englishTranslationContainer.appendChild(englishP);
+            })
+            .catch(error => console.error('Error fetching or processing data:', error));
+        }
+
+        // Initial call to display words when the page loads
+        getRandomWord2();
+    </script>
     
 </body>
 </html>
