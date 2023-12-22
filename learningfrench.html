@@ -41,6 +41,7 @@
                 const wordContainer = document.getElementById('word-container');
                 const frenchWordContainer = document.getElementById('french-word');
                 const englishTranslationContainer = document.getElementById('english-translation');
+                const italianTranslationContainer = document.getElementById('italian-translation');
 
                 const randomIndex = Math.floor(Math.random() * frenchWords.words.length);
                 const randomFrenchWord = frenchWords.words[randomIndex];
@@ -49,6 +50,7 @@
                 // Clear previous words
                 frenchWordContainer.textContent = '';
                 englishTranslationContainer.textContent = '';
+                italianTranslationContainer.textContent = '';
 
                 const frenchP = document.createElement('p');
                 frenchP.textContent = randomFrenchWord;
@@ -58,16 +60,24 @@
                 englishP.textContent = translation ? translation.english : 'Translation not available';
                 englishTranslationContainer.appendChild(englishP);
 
+                const italianP = document.createElement('p');
+                italianP.textContent = translation ? translation.italian : 'Translation not available';
+                italianTranslationContainer.appendChild(italianP);
+
                 // Reset the visibility of the English translation when fetching a new word
                 englishTranslationContainer.style.display = 'none';
+                italianTranslationContainer.style.display = 'none';
             })
             .catch(error => console.error('Error fetching or processing data:', error));
         }
 
         function toggleTranslation() {
             const englishTranslationContainer = document.getElementById('english-translation');
+            const italianTranslationContainer = document.getElementById('italian-translation');
             const currentDisplay = window.getComputedStyle(englishTranslationContainer).getPropertyValue('display');
             englishTranslationContainer.style.display = currentDisplay === 'none' ? 'block' : 'none';
+            const currentDisplay2 = window.getComputedStyle(italianTranslationContainer).getPropertyValue('display');
+            italianTranslationContainer.style.display = currentDisplay2 === 'none' ? 'block' : 'none';
         }
         
         // Initial call to display words when the page loads
