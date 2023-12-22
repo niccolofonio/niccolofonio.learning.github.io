@@ -41,7 +41,7 @@
                     wordContainer.classList.add('word-container');
 
                     const content = document.createElement('p');
-                    content.textContent = `${frenchWord} - ${translation ? translation.english : 'Translation not available'}`;
+                    content.textContent = `${frenchWord} - ${translation ? translation.english : 'Translation not available'} - ${translation ? translation.italian : 'Translation not available'}`;
                     wordContainer.appendChild(content);
 
                     allWordsContainer.appendChild(wordContainer);
